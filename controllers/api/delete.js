@@ -2,7 +2,7 @@ import city from "../../models/City.js";
 
 export default async (req,res,next) => {
     try{
-        let destroyed = await city.findOneAndDelete({admin_id: req.body.admin_id})
+        let destroyed = await city.findByIdAndDelete(req.params.id)
         if(destroyed){
             return res.status(200).json({
                 success: true,
