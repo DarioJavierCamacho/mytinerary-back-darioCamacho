@@ -5,6 +5,7 @@ let colection = 'cities'
 const schema = new Schema({
     country: {type: 'string',required: true},
     population: {type: 'number',required: false},
+    foundation: {type: 'string', required: false},
     photo: {type: 'string',required: true},
     city: {type:'string',required: true},
     description: {type: 'string',required: true},
