@@ -4,11 +4,10 @@ export default async(req, res, next)=>{
     
     try{
         let one = await city.findOne({_id:req.params.id});
-        if(one) return res.status(200).json({response:one,success:true});
-        else return res.status(404).json({message:"City not found"});     
+        return res.status(200).json({response:one,success:true});  
     }
     catch(error){
         console.log(error);
-        next(error);
+        return res.status(500).json({success:true , response:one});
     }
 }
