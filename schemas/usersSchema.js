@@ -13,9 +13,14 @@ const complexityOptions = {
 
 const schema = joi.object({
     usrName: joi.string().min(3).max(15).required().messages({
-        "string.min": "El minimo es 3 caracteres"
+        "string.min": "minimum is 3 characters",
+        "any.required": "name is required",
+        "string.empty": "name cannot be empty",
     }),
-    
+    usrSurname: joi.string().min(3).max(15).required().messages({
+        "string.empty": "surname cannot be empty",
+        "any.required": "surname is required",
+    }),
     pictureUrl: joi.string().uri(),
     email: joi.string().email().required().messages({
         "string.empty": "Email cannot be empty",
