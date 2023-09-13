@@ -1,9 +1,17 @@
 import express from "express";
-const router = express.Router();
+const usersRouter = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+import schema from '../schemas/usersSchema.js';
+import validator from "../middlewares/usersValidator.js";
+import usersController from "../controllers/users/usersController.js";
+import { emailExists } from "../middlewares/emailExists.js";
+import passport from "../middlewares/passport.js";
+const {signUp,signIn,signInToken} = usersController
 
-export default router;
+
+
+usersRouter.post('/signup',validator(schema),emailExists,signUp)
+usersRouter.post('/signIn',signIn)
+usersRouter.post( '/signin/token', passport.authenticate( 'jwt', {session: false} ), signInToken )
+
+export default usersRouter;
