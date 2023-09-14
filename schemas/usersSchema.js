@@ -18,8 +18,8 @@ const schema = joi.object({
         "string.empty": "name cannot be empty",
     }),
     usrSurname: joi.string().min(3).max(15).required().messages({
-        "string.empty": "surname cannot be empty",
-        "any.required": "surname is required",
+        "string.empty": "lastname cannot be empty",
+        "any.required": "lastname is required",
     }),
     pictureUrl: joi.string().uri(),
     email: joi.string().email().required().messages({
@@ -28,7 +28,7 @@ const schema = joi.object({
         "string.email": "email is not valid",
     }),
     password: joiPwd(complexityOptions),
-    country: joi.string().required(),
+    country: joi.string(),
     birth: joi.date().max(Date.now()),
     age: joi.number().min(0).max(60),
     phone: joi.number(),

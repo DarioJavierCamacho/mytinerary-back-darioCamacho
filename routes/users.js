@@ -12,6 +12,6 @@ const {signUp,signIn,signInToken} = usersController
 
 usersRouter.post('/signup',validator(schema),emailExists,signUp)
 usersRouter.post('/signIn',signIn)
-usersRouter.post( '/signin/token', passport.authenticate( 'jwt', {session: false} ), signInToken )
+usersRouter.post('/signin/token', passport.authenticate( 'jwt', {session: false} ), signInToken )
 
 export default usersRouter;
